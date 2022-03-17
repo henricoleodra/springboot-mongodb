@@ -1,15 +1,16 @@
 package com.henricoleodra.springbootmongodb.utils;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 
 public class MongoDBConnection {
     private MongoClient client;
 
-    public MongoDBConnection(){
-        client = new MongoClient("localhost", 27017);
+    public MongoDBConnection() {
+        client = MongoClients.create();
     }
 
-    public MongoClient getClient(){
+    public MongoClient getClient() {
         return client;
     }
 }

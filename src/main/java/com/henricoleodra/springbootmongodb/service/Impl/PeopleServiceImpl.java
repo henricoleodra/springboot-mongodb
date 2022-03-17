@@ -8,10 +8,16 @@ import org.springframework.stereotype.Service;
 
 @Service("PeopleService")
 public class PeopleServiceImpl implements PeopleService {
-    
+
     @Override
-    public void insertProducts(JSONObject data){
+    public void insertProducts(JSONObject data) {
         MongoDBStore store = new MongoDBStore();
         store.insertDocument(data);
+    }
+
+    @Override
+    public JSONObject getProducts(String id) {
+        MongoDBStore store = new MongoDBStore();
+        return store.findDocument(id);
     }
 }
