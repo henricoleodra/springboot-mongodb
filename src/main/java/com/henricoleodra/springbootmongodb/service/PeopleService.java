@@ -6,4 +6,6 @@ public interface PeopleService {
     public void insertProducts(JSONObject data);
 
     public JSONObject getProducts(String id);
+
+    public JSONObject explainQuery();
 }

@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/products")
-public class ProductsController {
+@RequestMapping("/people")
+public class PeopleController {
 
     @Autowired
     PeopleService service;
@@ -29,7 +29,12 @@ public class ProductsController {
     public void add(@RequestBody String payload) {
         JSONObject reqBody = new JSONObject(payload);
         service.insertProducts(reqBody);
-        // MongoDBConnection connection = new MongoDBConnection();
+    }
+
+    @GetMapping("/explain")
+    public ResponseEntity<String> explainQeury(){
+        JSONObject people = service.explainQuery();
+        return new ResponseEntity<String>(people.toString(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
